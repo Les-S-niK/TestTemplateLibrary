@@ -47,10 +47,10 @@ putChar:
     mov rbp, rsp 
 
     sub rsp, 0x08
-    mov qword [rbp - 0x00], rsi
+    mov qword [rbp - 0x08], rsi
     
     mov rax, 0x01
-    lea rsi, qword [rbp - 0x00]
+    lea rsi, [rbp - 0x08]
     mov rdx, 0x01
     syscall
 
