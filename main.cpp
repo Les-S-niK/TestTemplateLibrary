@@ -1,8 +1,4 @@
 
-#include <cstdlib>
-#include <print>
+#include "ttl/sys/io.hpp"
 
-auto main() -> int {
-    std::println("main");
-    return EXIT_SUCCESS;
-}
+extern "C" auto main() -> void { ttl::sys::putStrLn(0x01, "Hello from main!"); }
