@@ -11,21 +11,17 @@ template <typename T, typename E>
     requires(not ttl::traits::same_as<T, E>)
 class Result {
    public:
-    explicit constexpr Result(T value)
-        : has_value_(true), value_(ttl::move(value)) {}
-    explicit constexpr Result(E error) : error_(ttl::move(error)) {}
+    constexpr Result(T value) : has_value_(true), value_(ttl::move(value)) {}
+    constexpr Result(E error) : error_(ttl::move(error)) {}
 
-    [[nodiscard]] constexpr auto value() noexcept -> T {
+    [[nodiscard]] constexpr auto value() const noexcept -> T {
         if (not has_value_) {
             ttl::terminate();
         }
         return value_;
     }
     [[nodiscard]] constexpr auto valueView() const noexcept -> const T& {
-        if (not has_value_) {
-            ttl::terminate();
-        }
-        return value_;
+        return value();
     }
     [[nodiscard]] constexpr auto valueOr(T value) noexcept -> T {
         if (not has_value_) {

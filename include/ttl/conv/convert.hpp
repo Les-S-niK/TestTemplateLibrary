@@ -13,6 +13,7 @@ constexpr u8 char_number_difference = 0x30;
 [[nodiscard]] constexpr auto numberToChar(u8 number) noexcept -> char {
     return static_cast<char>(number + char_number_difference);
 }
+[[nodiscard]] constexpr auto toString(i32 value) {}
 }  // namespace ttl::conv
 
 #endif  // INCLUDE_CONV_CONVERT_HPP_
